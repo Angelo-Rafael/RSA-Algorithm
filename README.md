@@ -12,5 +12,5 @@ In my code, I tried to follow the algorithm's logic scheme, without copying from
 🇧🇷 **_Rivest-Shamir-Adleman_**, ou **_RSA_**, é um antigo sistema de criptografia de chave pública. Este sistema usa uma **chave pública**, que serve para encriptar, e uma **privada** para a descriptação. A assimetria é devido a dificuldade prática da fatorização do produto de dois **números primos grandes**.  
 No meu código, eu tentei seguir o esquema de lógica do algoritmo, sem copiar de outros códigos, somente com estudos do processo de cálculo necessário para obter a encriptação e descriptação. Apliquei esse processo em uma mensagem, basicamente então o meu código pega uma mensagem, encriptografa e descriptografa ela.
 
-🇺🇸 For more information on **RSA Algorithm** and **my code.**
+🇺🇸 For more information on **RSA Algorithm** and **my code.**  
 🇧🇷 Para mais informações do **Algoritmo RSA** e **meu código.**
