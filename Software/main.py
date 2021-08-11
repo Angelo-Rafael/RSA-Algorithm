@@ -44,44 +44,28 @@ def p_q():
     return [p, q] 
 
 
-def ETphi(x):
-    print()
-    y = 0
+def mult(x):
+
     m = []
-    ca = []
+
     for c in range(1, x+1):
         if x%c == 0:
             m.append(c)
-    
-    for c in range(1, x):
-        ca = []
-        for a in range(1, c+1):
-            if a != 1:
-                if c%a == 0:
-                    ca.append(a)
-        #print(ca)
-        t = False        
-        for b in range(0, len(ca)):
-            if ca[b] in m:
-                t = True
-        if not t:
-            y += 1
 
-    return y,m    
-
+    return m
 
 def NED(pq):
     print('\n\033[0;33mCalculating the value of "n"...')
     n = pq[0]*pq[1]
     sleep(1)
     print('\nCalculating the value of "l"...')
-    l = ETphi(n)[0]
+    l = (pq[0] - 1) * (pq[1] - 1)
     sleep(1)
     print('\nCalculating multiples of "n"...')
-    mult_n = ETphi(n)[1]
+    mult_n = mult(n)
     sleep(1)
     print('\nCalculating multiples of "l"...\033[m')
-    mult_l = ETphi(l)[1]
+    mult_l = mult(l)
     sleep(1)
     while True:
         while True:
@@ -200,8 +184,8 @@ keys = NED(pq)
 
 sleep(3)
 
-encrypt('message.txt', keys[0], keys[1])
+encrypt('Software\message.txt', keys[0], keys[1])
 
 sleep(10)
 
-decrypt('message.txt', keys[0], keys[2])
+decrypt('Software\message.txt', keys[0], keys[2])
