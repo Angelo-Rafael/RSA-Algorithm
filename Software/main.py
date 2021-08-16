@@ -1,3 +1,4 @@
+from os import truncate
 from alpha import List
 from time import sleep
 
@@ -28,31 +29,34 @@ def p_q():
             else:
                 break
             
-        
-        if p > 2 and q > 2:
-            if p*q > 219:
-                if prime(p) and prime(q):
-                    break
+        if p != q:
+            if p > 2 and q > 2:
+                if p*q > 194:
+                    if prime(p) and prime(q):
+                        break
+                    else:
+                        print('\n\033[0;31mYour numbers are not prime numbers.\033[m')
                 else:
-                    print('\n\033[0;31mYour numbers are not prime numbers.\033[m')
+                    print('\n\033[0;31mEnter larger numbers so that their multiplication product is greater than 194.\033[m')
+
             else:
-                print('\n\033[0;31mEnter larger numbers so that their multiplication product is greater than 194.\033[m')
-                
+                print('\n\033[0;31mOne or two of its values ​​(p, q) are too small.\033[m')
         else:
-            print('\n\033[0;31mOne or two of its values ​​(p, q) are too small.\033[m')
+            print('\n\033[0;31mDo not choose equal values.\033[m')
 
     return [p, q] 
 
 
-def mult(x):
+def div(x):
 
     m = []
-
     for c in range(1, x+1):
         if x%c == 0:
             m.append(c)
+        
 
     return m
+
 
 def NED(pq):
     print('\n\033[0;33mCalculating the value of "n"...')
@@ -61,46 +65,52 @@ def NED(pq):
     print('\nCalculating the value of "l"...')
     l = (pq[0] - 1) * (pq[1] - 1)
     sleep(1)
-    print('\nCalculating multiples of "n"...')
-    mult_n = mult(n)
+    print('\nCalculating divisors of "l"...')
+    div_l = div(l)
     sleep(1)
-    print('\nCalculating multiples of "l"...\033[m')
-    mult_l = mult(l)
-    sleep(1)
+
     while True:
         while True:
             try:
-                e = int(input(f'\nChoose an whole number greater than 1 and less than \033[0;33m{l}\033[m that is coprime with \033[0;33m{l}\033[m and \033[0;33m{n}\033[m.\n\ne: '))
-            
+                e = int(input(f'\nChoose an whole number greater than 1 and less than \033[0;33m{n}\033[m that is coprime with \033[0;33m{l}\033[m. \n\ne: '))
+                
             except:
                 print('\n\033[0;31mEnter whole number.\033[m')
 
             else:
                 break
+        
+        div_e = div(e)
+        
+        print(f'\nl = {div_l}')
+
+        print(f'\ne = {div_e}')
+        verification = True
 
         if 1 < e < n:
-            for c in mult_n:
-                if e != c:
-                    c1 = True
+            for c in div_l:
+                if c == 1:
+                    pass
                 else:
-                    c1 = False
+                    for x in div_e:
+                        if x == c:
+                            verification = False
+                            break
+                        else:
+                            pass
+                if not verification:
                     break
-
-            for c in mult_l:
-                if e != c:
-                    c2 = True
                 else:
-                    c2 = False
-                    break
-
-            if c1 and c2:
+                    pass
+                
+            if verification:
                 break
             
             else:
                 print('\n\033[0;31mTry another number.\033[m')
         else:
             print('\n\033[0;31mTry another number.\033[m')
-
+        
     d = 1
     print('\n\033[0;33mCalculating the value of "d"...\033[m')
     sleep(5)
@@ -176,7 +186,7 @@ def decrypt(arq, n, d):
 
     
 
-print('\n\033[0;33mRSA ALGORITHM')
+print('\n\033[0;35mRSA ALGORITHM')
 print('-_-'*10,'\033[m')
 
 pq = p_q()
@@ -189,3 +199,5 @@ encrypt('Software\message.txt', keys[0], keys[1])
 sleep(10)
 
 decrypt('Software\message.txt', keys[0], keys[2])
+
+print('\n\033[0;35mFinished!\033[m')
